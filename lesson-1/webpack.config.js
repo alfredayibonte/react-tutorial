@@ -9,25 +9,29 @@ module.exports = {
   },
   module: {
     rules: [
-        {
+      {
         test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
         use: ['babel-loader']
       },
       {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-        include: path.resolve(__dirname, 'src'),
+        test: /\.(s*)css$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+        include: path.resolve(__dirname, 'src')
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
       }
     ]
   },
   devServer: {
-    contentBase:  path.resolve(__dirname, 'dist'),
+    contentBase: path.resolve(__dirname, 'dist'),
     port: 9000
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "src/index.html" //source html
+      template: 'src/index.html' //source html
     })
   ]
 };
