@@ -10,6 +10,7 @@ import { getUser } from '../../services'
 import PageNotFoundCompoment from '../static-pages/page-not-found'
 import './index.style.scss'
 import ProtectedRoute from './shared/ProtectedRoute';
+import { NOT_FOUND, LOGIN } from './Contants'
 const Layout = () => {
     const user = getUser()
     return (
@@ -22,9 +23,9 @@ const Layout = () => {
                     <ProtectedRoute component={Shop} path='/shop' />
                     <Route exact path='/books' component={BookList} />
                     <Route  path='/books/:id' component={BookShow} />
-                    <Route  path='/login' component={SignInPage} />
-                    <Route  path='/404' component={PageNotFoundCompoment} />
-                    <Redirect to='/404'/>
+                    <Route  path={LOGIN} component={SignInPage} />
+                    <Route  path={NOT_FOUND} component={PageNotFoundCompoment} />
+                    <Redirect to={NOT_FOUND}/>
                 </Switch>
         </div>
         </Router>

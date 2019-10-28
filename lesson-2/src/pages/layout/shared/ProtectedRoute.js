@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { getUser } from '../../../services';
+import { LOGIN } from '../Contants';
 
 const ProtectedRoute = ({ component: Component, render, ...rest }) => {
     const user = getUser()
@@ -9,7 +10,7 @@ const ProtectedRoute = ({ component: Component, render, ...rest }) => {
          if (user && user.isLoggedIn) {
             return Component ? <Component {...props} /> : render(props);
          } else {
-            return <Redirect to={{pathname: '/login', state: {from: props.location}}} />
+            return <Redirect to={{pathname: LOGIN, state: {from: props.location}}} />
          }
       }} />
    );
