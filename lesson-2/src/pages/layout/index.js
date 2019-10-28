@@ -7,7 +7,9 @@ import BookList from '../books/BookList'
 import BookShow from '../books/BookShow'
 import SignInPage from '../signin/signin'
 import { getUser } from '../../services'
+import PageNotFoundCompoment from '../static-pages/page-not-found'
 import './index.style.scss'
+import ProtectedRoute from './shared/ProtectedRoute';
 const Layout = () => {
     const user = getUser()
     return (
@@ -17,18 +19,12 @@ const Layout = () => {
             <div>
                 <Switch>
                     <Route exact path='/' component={Home} />
-                    <Route
-                        path='/shop'
-                        render={
-                            props => {
-                                if(user && user.isLoggedIn)
-                                    return <Shop user={user} {...props}/>
-                                else return <Redirect to='/login' />
-                            }
-                         }/>
+                    <ProtectedRoute component={Shop} path='/shop' />
                     <Route exact path='/books' component={BookList} />
                     <Route  path='/books/:id' component={BookShow} />
                     <Route  path='/login' component={SignInPage} />
+                    <Route  path='/404' component={PageNotFoundCompoment} />
+                    <Redirect to='/404'/>
                 </Switch>
         </div>
         </Router>

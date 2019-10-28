@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom'
 import { authenticationUser, getUser } from '../../services/index';
-const SignIn  = ({history}) => {
+const SignIn  = ({history, location, ...rest }) => {
+    console.log('login-location:::', location)
     const [state, setState] = useState({})
     const handleChange = (event) => {
        const { value, name, id } = event.currentTarget;
@@ -14,12 +15,12 @@ const SignIn  = ({history}) => {
          .then((user) => {
              console.log('saved user:::', user)
              alert('saved user successfully!')
-             history.replace('/')
+            location && location.state ? history.replace(location.state.from.pathname) : history.push('/home')
          })
     }
     const user = getUser();
     if(user && user.isLoggedIn){ 
-        return (<Redirect to='/' />)
+        return (<Redirect to={location.state.from.pathname} />)
     }
     return (
         <div>
