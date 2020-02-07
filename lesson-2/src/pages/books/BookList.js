@@ -8,7 +8,7 @@ const BookList = props => {
   //console.log('booklist', props);
   const [loading, setLoading] = useState(false);
   const [books, setBooks] = useState([]);
-  const [error, setErrors] = useState('');
+  const [error, setError] = useState('');
   useEffect(() => {
     setLoading(true);
     fetchData();
@@ -20,7 +20,7 @@ const BookList = props => {
       //  bookList().then(books => setBooks(books));
       setLoading(false);
     } catch (error) {
-      setErrors(error);
+      setError(error);
     }
   };
 
