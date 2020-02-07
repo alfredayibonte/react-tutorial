@@ -1,19 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getUser } from '../../services/index';
-
+//import { getUser } from '../../services/index';
+import { LOGIN, HOME, SHOP, LOGOUT, BOOKS } from '../../pages/layout/Contants';
 import './top-nav.style.scss';
 const TopNav = props => {
-  const user = getUser();
-
   return (
     <div className="topNavContainer">
-      <Link to="/">Home</Link>
-      <Link to="/shop">Shop</Link>
-      {user && user.isLoggedIn ? (
-        <Link to="/logout">Logout</Link>
+      <Link to={HOME}>Home</Link>
+      <Link to={SHOP}>Shop</Link>
+      <Link to={BOOKS}>Books</Link>
+      {props.user && props.user.isLoggedIn ? (
+        <Link to={LOGOUT}>Logout</Link>
       ) : (
-        <Link to="/login">Login</Link>
+        <Link to={LOGIN}>Login</Link>
       )}
     </div>
   );

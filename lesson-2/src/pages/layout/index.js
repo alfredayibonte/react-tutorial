@@ -11,45 +11,36 @@ import Shop from '../shop/shop';
 import BookList from '../books/BookList';
 import BookShow from '../books/BookShow';
 import SignInPage from '../signin/signin';
-import { getUser, logoutUser } from '../../services/index';
+import { getUser, logoutUser } from '../../services';
+import PageNotFoundCompoment from '../static-pages/page-not-found';
 import './index.style.scss';
+import ProtectedRoute from './shared/ProtectedRoute';
+import { NOT_FOUND, LOGIN, HOME, SHOP, BOOKS, LOGOUT } from './Contants';
 const Layout = () => {
   const user = getUser();
 
   return (
     <div>
       <Router>
-        <TopNav />
+        <TopNav user={user} />
         <div>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path={HOME} component={Home} />
+            <ProtectedRoute component={Shop} path={SHOP} />
+            <Route exact path={BOOKS} component={BookList} />
+            <Route path="/books/:id" component={BookShow} />
             <Route
-              path="/shop"
+              path={LOGOUT}
               render={props => {
                 if (user && user.isLoggedIn) {
-                  return <Shop {...props} user={user} />;
-                } else {
-                  return <Redirect to="/login" />;
+                  logoutUser();
+                  return <Redirect to={LOGIN} />;
                 }
               }}
             />
-            <Route exact path="/books" component={BookList} />
-            <Route path="/books/:id" component={BookShow} />
-            <Route path="/login" component={SignInPage} />
-
-            <Route
-              path="/logout"
-              render={props => {
-                logoutUser();
-                return <Redirect to="/login" />;
-              }}
-            />
-            <Route
-              path="*"
-              render={props => {
-                return <div>Page Not Found</div>;
-              }}
-            />
+            <Route path={LOGIN} component={SignInPage} />
+            <Route path={NOT_FOUND} component={PageNotFoundCompoment} />
+            <Redirect to={NOT_FOUND} />
           </Switch>
         </div>
       </Router>
