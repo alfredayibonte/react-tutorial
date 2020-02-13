@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import { getUser } from '../../services/index';
+
 import { LOGIN, HOME, SHOP, LOGOUT, BOOKS } from '../../pages/layout/Contants';
 import './top-nav.style.scss';
 const TopNav = props => {

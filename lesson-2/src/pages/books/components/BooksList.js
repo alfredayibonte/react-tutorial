@@ -1,8 +1,5 @@
 import React from 'react';
 const BooksData = ({ booklist }) => {
-  console.log(booklist);
-  //return <h1>Testing</h1>;
-
   const books = booklist.map(book => (
     <div key={book.id}>
       <h1>{book.name}</h1>

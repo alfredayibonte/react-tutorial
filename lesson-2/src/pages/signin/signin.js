@@ -3,20 +3,17 @@ import { Redirect } from 'react-router-dom';
 import { authenticationUser, getUser } from '../../services/index';
 import { HOME } from '../layout/Contants';
 const SignIn = ({ history, location, ...rest }) => {
-  console.log('login-location:::', location);
   const [state, setState] = useState({});
 
   const handleChange = event => {
-    const { value, name, id } = event.currentTarget;
-    console.log(value, name, id);
+    const { value, name } = event.currentTarget;
+
     setState({ ...state, [name]: value });
   };
 
   const handleSubmit = event => {
     event.preventDefault();
     authenticationUser(state).then(user => {
-      console.log('saved user:::', user);
-      alert('saved user successfully!');
       location && location.state
         ? history.replace(location.state.from.pathname)
         : history.push({ HOME });

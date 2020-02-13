@@ -14,7 +14,7 @@ import SignInPage from '../signin/signin';
 import { getUser, logoutUser } from '../../services';
 import PageNotFoundCompoment from '../static-pages/page-not-found';
 import './index.style.scss';
-import ProtectedRoute from './shared/ProtectedRoute';
+import ProtectedRoute from './shared/Protected-Route';
 import { NOT_FOUND, LOGIN, HOME, SHOP, BOOKS, LOGOUT } from './Contants';
 const Layout = () => {
   const user = getUser();
@@ -27,7 +27,7 @@ const Layout = () => {
           <Switch>
             <Route exact path={HOME} component={Home} />
             <ProtectedRoute component={Shop} path={SHOP} />
-            <Route exact path={BOOKS} component={BookList} />
+            <ProtectedRoute exact path={BOOKS} component={BookList} />
             <Route path="/books/:id" component={BookShow} />
             <Route
               path={LOGOUT}
