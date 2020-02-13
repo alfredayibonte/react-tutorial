@@ -27,9 +27,9 @@ const BookList = props => {
     <div>
       <h2>Book List</h2>
 
-      {<Loadingbooks loading={loading} />}
-      {<BooksData booklist={books} />}
-      {<BooksError error={error} />}
+      <Loadingbooks loading={loading} />
+      <BooksData booklist={books} />
+      <BooksError error={error} />
     </div>
   );
 };
