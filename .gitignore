@@ -2,6 +2,8 @@
 node_modules
 lesson-1/node_modules
 lesson-2/node_modules
+lesson-3/node_modules
+lesson-4/node_modules
 lesson-2/.env
 lesson-2/.env.development
 /*/node_modules
