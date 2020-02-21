@@ -7,4 +7,4 @@ export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const PRODUCTS_ERROR = 'PRODUCTS_ERROR';
 
 export const PRODUCTLIST_URL =
-  'http://www.mocky.io/v2/5e4e24502f0000f55116a3cd';
+  'http://www.mocky.io/v2/5e4e538e2f0000a33016a5e9';
