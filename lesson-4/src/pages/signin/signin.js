@@ -29,25 +29,35 @@ const SignIn = ({ history, location, ...rest }) => {
     );
   }
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input id="email" type="text" name="email" onChange={handleChange} />
+    <div className="container">
+      <h3 className="center">Product List</h3>
+      <div className="box">
+        <div className="row">
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                type="text"
+                name="email"
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                name="password"
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <input type="submit" />
+            </div>
+          </form>
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <input type="submit" />
-        </div>
-      </form>
+      </div>
     </div>
   );
 };

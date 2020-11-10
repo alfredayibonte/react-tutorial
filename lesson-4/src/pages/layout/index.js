@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import TopNav from '../../components/TopNav/TopNav';
 import Home from '../home/home';
+import ProductList from '../products/ProductList';
 import Shop from '../shop/shop';
 import BookList from '../books/BookList';
 import BookShow from '../books/BookShow';
@@ -15,7 +16,15 @@ import { getUser, logoutUser } from '../../services';
 import PageNotFoundCompoment from '../static-pages/page-not-found';
 import './index.style.scss';
 import ProtectedRoute from './shared/Protected-Route';
-import { NOT_FOUND, LOGIN, HOME, SHOP, BOOKS, LOGOUT } from './Contants';
+import {
+  NOT_FOUND,
+  LOGIN,
+  HOME,
+  SHOP,
+  BOOKS,
+  LOGOUT,
+  PRODUCTS
+} from './Contants';
 const Layout = () => {
   const user = getUser();
 
@@ -28,6 +37,7 @@ const Layout = () => {
             <Route exact path={HOME} component={Home} />
             <ProtectedRoute component={Shop} path={SHOP} />
             <ProtectedRoute exact path={BOOKS} component={BookList} />
+            <ProtectedRoute exact path={PRODUCTS} component={ProductList} />
             <Route path="/books/:id" component={BookShow} />
             <Route
               path={LOGOUT}
